@@ -4,6 +4,7 @@ import services_bg from '../../Internal_Component_Files/services_bg.avif'
 import { Services_data } from '../../assets/ProjectsData'
 
 function Services() {
+  
   return (
     <div>
       <>
