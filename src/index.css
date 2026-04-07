@@ -3,6 +3,83 @@
 @import "tailwindcss";
 
 
+#body {
+  margin: 0;
+  padding: 0;
+}
+
 *{
     font-family: 'Outfit' ;
 }
+
+
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE & Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+
+@layer components {
+  .corner-fold {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(
+      135deg,
+      #e5e7eb 50%,
+      transparent 50%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .group:hover .corner-fold {
+    opacity: 1;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+@keyframes scaleLoop {
+  0% {
+    transform: scale(1.25);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.25);
+  }
+}
+
+.animate-scale {
+  animation: scaleLoop 1s ease-in-out infinite;
+}
+
+@layer base {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+
+
+
+
+
+
