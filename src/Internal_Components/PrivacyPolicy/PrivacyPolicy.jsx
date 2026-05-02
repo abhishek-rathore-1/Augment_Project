@@ -169,7 +169,7 @@ function PrivacyPolicy() {
                         </p>
 
                         <p>
-                            📧 Email: info@augmentinfotech.com
+                            📧 Email: hr@augmentinfotech.com
                         </p>
 
                     </div>

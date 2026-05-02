@@ -207,8 +207,8 @@ function WorkWithUs() {
 
                         Send your resume at{" "}
 
-                        <a href="mailto:hr.augmentinfotech@gmail.com" className="text-blue-600 font-medium break-all hover:underline">
-                            "hr.augmentinfotech@gmail.com"
+                        <a href="mailto:hr@augmentinfotech.com" className="text-blue-600 font-medium break-all hover:underline">
+                            "hr@augmentinfotech.com"
                         </a>
 
                     </div>
