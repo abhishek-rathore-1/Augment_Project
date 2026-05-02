@@ -13,7 +13,7 @@ function Footer() {
                         <img src={AugmentLogo1} alt="" className='h-10' />
                         {/* <h3 className='text-lg font-bold'></h3> */}
                     </div>
-                    <p className='text-gray-400 mt-4'>Augment Technology creates reliable, scalable digital solutions empowering businesses through innovation, design excellence, and cutting-edge technology worldwide.
+                    <p className='text-gray-400 mt-4'>Augment Infotech creates reliable, scalable digital solutions empowering businesses through innovation, design excellence, and cutting-edge technology worldwide.
                     </p>
                 </div>
                 <div className='md:1/5 mb-8 md:mb-0'>

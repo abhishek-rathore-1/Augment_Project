@@ -7,6 +7,10 @@ import {
   careerHeroImage,
   getCareerJobById,
 } from "../content/careersContentV2";
+import {
+  MAX_CAREER_ATTACHMENT_SIZE_BYTES,
+  submitCareerApplication,
+} from "../utils/submitCareerApplication";
 
 const initialFormState = {
   name: "",
@@ -21,12 +25,6 @@ function ApplyJobPageV2() {
   const job = getCareerJobById(id);
   const [formState, setFormState] = useState(initialFormState);
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const apiBase =
-    import.meta.env.VITE_API_BASE_URL ||
-    (typeof window !== "undefined" && window.location.hostname === "localhost"
-      ? "http://localhost:5000"
-      : "");
 
   if (!job) {
     return (
@@ -56,39 +54,32 @@ function ApplyJobPageV2() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    if (!apiBase) {
-      toast.info("Please email your resume to hr@augmentinfotech.com.");
-      return;
-    }
+    const form = event.currentTarget;
 
     if (!formState.resume) {
       toast.error("Please attach your resume.");
       return;
     }
 
+    if (formState.resume.size > MAX_CAREER_ATTACHMENT_SIZE_BYTES) {
+      toast.error("Please upload a resume smaller than 5 MB.");
+      return;
+    }
+
     setIsSubmitting(true);
 
-    const data = new FormData();
-    data.append("name", formState.name);
-    data.append("email", formState.email);
-    data.append("phone", formState.phone);
-    data.append("position", job.title);
-    data.append("technology", formState.technology);
-    data.append("resume", formState.resume);
-
     try {
-      const response = await fetch(`${apiBase}/api/apply`, {
-        method: "POST",
-        body: data,
+      const result = await submitCareerApplication({
+        ...formState,
+        jobTitle: job.title,
       });
-      const result = await response.json();
 
-      if (!result.success) {
-        throw new Error(result.message || "Unable to submit the application.");
-      }
-
-      toast.success("Application submitted successfully.");
+      toast.success(
+        result.attachmentSent
+          ? "Application submitted successfully."
+          : "Application details sent. If the resume is missing, please email it to hr@augmentinfotech.com.",
+      );
+      form.reset();
       setFormState(initialFormState);
     } catch (error) {
       toast.error(

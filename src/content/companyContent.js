@@ -10,7 +10,7 @@ import RichardNelson from "../assets/Nelson.jpg";
 import JamesWashington from "../assets/Washington.jpg";
 import Shailesh from "../assets/Team-imgs/Shailesh.jpeg";
 import Peeyush from "../assets/Team-imgs/Peeyush.jpeg";
-import Abhishek from "../assets/Team-imgs/Abhishek.png";
+import Abhishek from "../assets/Team-imgs/Abhishek img.jpeg";
 import Java from "../Internal_Component_Files/Java.png";
 import Angular from "../Internal_Component_Files/Angular.png";
 import DotNet from "../Internal_Component_Files/NET.png";
@@ -253,7 +253,7 @@ export const teamMembers = [
       "Leads the company with a focus on long-term partnerships, delivery reliability, and practical technology adoption.",
   },
   {
-    name: "Peeyush Dahiya",
+    name: "Sarthak parulekar",
     role: "Business Development Executive",
     image: Peeyush,
     bio:
@@ -363,17 +363,17 @@ export const contactChannels = [
   },
   {
     title: "Phone",
-    value: "+91 62671 38940",
+    value: "+91 91310 77849",
     note: "Talk to the team about timelines, scope, and next steps.",
-    href: "tel:+916267138940",
+    href: "tel:+919131077849",
   },
   {
     title: "Office",
     value:
-      "519, Shagun Tower, A.B. Road, Vijay Nagar, Indore, Madhya Pradesh 452010",
+      "A.B. Road, Vijay Nagar, Indore, Madhya Pradesh 452010",
     secondary: "India",
     note: "Primary operations and delivery coordination.",
-    href: "https://www.google.com/maps?q=519,+Shagun+Tower,+A.B.+Road,+Vijay+Nagar,+Indore,+Madhya+Pradesh+452010",
+    href: "https://www.google.com/maps?q=A.B.%20Road%2C%20Vijay%20Nagar%2C%20Indore%2C%20Madhya%20Pradesh%20452010",
     image: IndiaFlag,
   },
 ];

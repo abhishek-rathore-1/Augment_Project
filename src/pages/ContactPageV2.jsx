@@ -110,7 +110,7 @@ function ContactPageV2() {
             <div className="h-full overflow-hidden rounded-[32px] border border-slate-200 shadow-[0_30px_80px_-52px_rgba(15,23,42,0.35)]">
               <iframe
                 title="Augment Infotech office location"
-                src="https://www.google.com/maps?q=519,+Shagun+Tower,+A.B.+Road,+Vijay+Nagar,+Indore,+Madhya+Pradesh+452010&z=15&output=embed"
+                src="https://www.google.com/maps?q=A.B.%20Road%2C%20Vijay%20Nagar%2C%20Indore%2C%20Madhya%20Pradesh%20452010&z=15&output=embed"
                 className="h-[320px] w-full border-0 md:h-[420px] lg:h-full"
                 loading="lazy"
                 allowFullScreen

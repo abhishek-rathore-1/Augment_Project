@@ -93,18 +93,33 @@ function FireSafetyPage() {
             ))}
           </div>
 
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="mt-16 text-center">
+            <span className="inline-flex rounded-full border border-white/12 bg-white/8 px-4 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.3em] text-slate-300">
+              Trusted facilities
+            </span>
+            <h3 className="mt-5 font-heading text-3xl font-semibold text-white sm:text-4xl">
+              Trusted by teams operating in demanding industrial environments.
+            </h3>
+            <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-300 md:text-base">
+              These organisations reflect the kind of facilities where reliability, inspection discipline, and dependable on-ground execution matter.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
             {fireClients.map((client) => (
-              <div
-                key={client.name}
-                className="flex items-center justify-center rounded-[28px] border border-white/10 bg-white/8 p-5"
-              >
-                <img
-                  src={client.image}
-                  alt={client.name}
-                  className="h-16 object-contain"
-                />
-              </div>
+              <article key={client.name} className="brand-logo-card">
+                <div className="brand-logo-card__panel">
+                  <div className="brand-logo-card__image-wrap">
+                    <img
+                      src={client.image}
+                      alt={client.name}
+                      loading="lazy"
+                      className="brand-logo-card__image"
+                    />
+                  </div>
+                  <p className="brand-logo-card__label">{client.name}</p>
+                </div>
+              </article>
             ))}
           </div>
         </div>

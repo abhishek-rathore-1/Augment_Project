@@ -29,7 +29,7 @@ import TCS_logo from './ClientsLogo/TCS-logo.jpg'
 // Team images
 import Shailesh from './Team-imgs/Shailesh.jpeg'
 import Peeyush from './Team-imgs/Peeyush.jpeg'
-import Abhishek from './Team-imgs/Abhishek.png'
+import Abhishek from './Team-imgs/Abhishek img.jpeg'
 // Technology images
 import java from '../Internal_Component_Files/java.png'
 import angular from '../Internal_Component_Files/Angular.png'
@@ -319,7 +319,7 @@ export const TeamDatas = [
   },
   {
     image: Peeyush,
-    name: "Peeyush Dahiya",
+    name: "Sarthak parulekar",
     position: "Business Development Executive"
   },
   {
@@ -367,7 +367,7 @@ export const teamMembers = [
     img: Shailesh,
   },
   {
-    name: "Peeyush Dahiya",
+    name: "Sarthak parulekar",
     role: "Customer Relationship Manager",
     img: Peeyush,
   },

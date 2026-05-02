@@ -1,124 +1,78 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
+import { getCareerJobById } from "../../content/careersContent";
+import {
+  MAX_CAREER_ATTACHMENT_SIZE_BYTES,
+  submitCareerApplication,
+} from "../../utils/submitCareerApplication";
 
 function ApplyJob() {
 
   const { id } = useParams();
-
-  const [job, setJob] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-
+  const job = getCareerJobById(id);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    position: "",
     technology: "",
-    resume: null
+    resume: null,
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const loading = false;
+  const error = job ? "" : "Role not found.";
 
   // 🟢 Fetch Job
-  useEffect(() => {
-
-    const fetchJob = async () => {
-
-      try {
-
-        console.log("Fetching Job ID:", id);
-
-        const res = await fetch(
-          `http://localhost:5000/api/jobs/${id}`
-        );
-
-        const data = await res.json();
-
-        console.log("Job Data:", data);
-
-        if (!data) {
-
-          setError("Loading...");
-
-        } else {
-
-          setJob(data);
-
-          setFormData(prev => ({
-            ...prev,
-            position: data.title
-          }));
-
-        }
-
-      } catch (err) {
-
-        console.error(err);
-
-        setError("Failed to load job");
-
-      } finally {
-
-        setLoading(false);
-
-      }
-
-    };
-
-    fetchJob();
-
-  }, [id]);
+  
 
 
 
   // 🟢 Handle Input
-  const handleChange = (e) => {
+  const handleChange = (event) => {
+    const { name, value } = event.target;
 
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-
+    setFormData((current) => ({
+      ...current,
+      [name]: value,
+    }));
   };
 
 
 
   // 🟢 File Upload
-  const handleFileChange = (e) => {
-
-    setFormData({
-      ...formData,
-      resume: e.target.files[0]
-    });
-
+  const handleFileChange = (event) => {
+    setFormData((current) => ({
+      ...current,
+      resume: event.target.files?.[0] || null,
+    }));
   };
 
 
 
   // 🟢 Submit Form
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (event) => {
 
-  e.preventDefault();
+    event.preventDefault();
+    const form = event.currentTarget;
 
-  const data = new FormData();
+    if (!formData.resume) {
+      toast.error("Please attach your resume.");
+      return;
+    }
 
-  data.append("name", formData.name);
-  data.append("email", formData.email);
-  data.append("phone", formData.phone);
-  data.append("position", formData.position);
-  data.append("technology", formData.technology);
-  data.append("resume", formData.resume);
+    if (formData.resume.size > MAX_CAREER_ATTACHMENT_SIZE_BYTES) {
+      toast.error("Please upload a resume smaller than 5 MB.");
+      return;
+    }
+
+    setIsSubmitting(true);
 
   try {
 
-    const response = await fetch(
-      "http://localhost:5000/api/apply",
-      {
-        method: "POST",
-        body: data
-      }
-    );
-
-    const result = await response.json();
+    const result = await submitCareerApplication({
+      ...formData,
+      jobTitle: job.title,
+    });
 
     if (result.success) {
 
@@ -141,7 +95,14 @@ function ApplyJob() {
 
   } catch (error) {
 
-    console.error("Error submitting form:", error);
+    toast.error(
+      error.message ||
+        "We could not submit the application right now. Please try again or email us directly."
+    );
+
+  } finally {
+
+    setIsSubmitting(false);
 
   }
 
@@ -194,7 +155,7 @@ function ApplyJob() {
 
             <p className="text-gray-700 leading-relaxed whitespace-pre-line">
 
-              {job.description}
+              {job.summary}
 
             </p>
 
@@ -246,7 +207,7 @@ function ApplyJob() {
 
               <input
                 type="text"
-                value={formData.position}
+                value={job.title}
                 readOnly
                 className="border rounded-full px-5 py-3"
               />
@@ -257,6 +218,7 @@ function ApplyJob() {
             <input
               type="file"
               required
+              accept=".pdf,.doc,.docx"
               onChange={handleFileChange}
               className="border rounded-full px-5 py-3 w-full"
             />
@@ -275,10 +237,11 @@ function ApplyJob() {
 
             <button
               type="submit"
-              className="bg-blue-600 text-white px-8 py-3 rounded"
+              disabled={isSubmitting}
+              className="bg-blue-600 text-white px-8 py-3 rounded disabled:cursor-not-allowed disabled:opacity-70"
             >
 
-              Submit
+              {isSubmitting ? "Submitting..." : "Submit"}
 
             </button>
 

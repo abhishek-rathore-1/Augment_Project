@@ -314,9 +314,6 @@ function HomePage() {
                 <p className="mt-1 text-sm font-semibold text-sky-800">
                   {member.role}
                 </p>
-                <p className="mt-3 text-sm leading-7 text-slate-600">
-                  {member.bio}
-                </p>
               </article>
             ))}
           </div>

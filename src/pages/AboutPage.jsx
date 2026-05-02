@@ -64,21 +64,22 @@ function AboutPage() {
 
           <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {whyChooseUs.map((item) => (
-              <article
-                key={item.title}
-                className="rounded-[32px] border border-white/10 bg-white/6 p-6 backdrop-blur-sm"
-              >
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="h-20 w-20 object-contain"
-                />
-                <h3 className="mt-5 font-heading text-2xl font-semibold text-white">
-                  {item.title}
-                </h3>
-                <p className="mt-4 text-sm leading-7 text-slate-300">
-                  {item.description}
-                </p>
+              <article key={item.title} className="about-operate-card">
+                <div className="about-operate-card__media">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="about-operate-card__image"
+                  />
+                </div>
+                <div className="about-operate-card__body">
+                  <h3 className="font-heading text-2xl font-semibold text-white">
+                    {item.title}
+                  </h3>
+                  <p className="mt-4 text-sm leading-7 text-slate-300">
+                    {item.description}
+                  </p>
+                </div>
               </article>
             ))}
           </div>

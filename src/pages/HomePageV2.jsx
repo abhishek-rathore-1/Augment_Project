@@ -430,15 +430,15 @@ function HomePageV2() {
                   src={member.image}
                   alt={member.name}
                   className="aspect-[4/5] w-full rounded-[28px] object-cover"
+                  style={{
+                    objectPosition: member.imagePosition ?? "center",
+                  }}
                 />
                 <h3 className="mt-5 font-heading text-xl font-semibold text-slate-950">
                   {member.name}
                 </h3>
                 <p className="mt-1 text-sm font-semibold text-sky-800">
                   {member.role}
-                </p>
-                <p className="mt-3 text-sm leading-7 text-slate-600">
-                  {member.bio}
                 </p>
               </article>
             ))}

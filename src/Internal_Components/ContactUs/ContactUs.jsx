@@ -60,7 +60,7 @@ function ContactUs() {
                     <div className="w-[400px] h-[400px] rounded-xl overflow-hidden shadow-md">
                         <iframe
                             title="map"
-                            src="https://www.google.com/maps?q=QVCM+W4V,+Niranjanpur+Kabit+Khedi,+Scheme+No+136,+Indore,+Madhya+Pradesh+452010&z=15&output=embed"
+                            src="https://www.google.com/maps?q=A.B.%20Road%2C%20Vijay%20Nagar%2C%20Indore%2C%20Madhya%20Pradesh%20452010&z=15&output=embed"
                             className="w-full h-full border-0"
                             loading="lazy"
                             allowFullScreen
@@ -105,7 +105,7 @@ function ContactUs() {
                         <img src={flag} alt="" className="w-10 text-center m-auto" />
                         <h3 className="font-semibold text-lg mb-2 text-gray-300">India Office</h3>
                         <p className="text-sm text-gray-600">
-                            Niranjanpur - Kabit Khedi, Bulandshahr, Scheme Number 136, Indore, Madhya Pradesh 452010
+                            A.B. Road, Vijay Nagar, Indore, Madhya Pradesh 452010
                         </p>
                     </div>
 

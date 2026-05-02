@@ -25,22 +25,19 @@ function TeamPage() {
             align="center"
           />
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {teamMembers.map((member) => (
-              <article key={member.name} className="surface-card p-7">
+              <article key={member.name} className="surface-card mx-auto w-full max-w-[260px] p-5">
                 <img
                   src={member.image}
                   alt={member.name}
-                  className="aspect-[4/5] w-full rounded-[28px] object-cover"
+                  className="h-52 w-full rounded-2xl object-cover"
                 />
-                <h3 className="mt-6 font-heading text-2xl font-semibold text-slate-950">
+                <h3 className="mt-4 font-heading text-lg font-semibold text-slate-950">
                   {member.name}
                 </h3>
-                <p className="mt-1 text-sm font-semibold text-sky-800">
+                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.16em] text-sky-800">
                   {member.role}
-                </p>
-                <p className="mt-4 text-sm leading-7 text-slate-600">
-                  {member.bio}
                 </p>
               </article>
             ))}
